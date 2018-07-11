@@ -37,8 +37,32 @@ def mas_temp_check(set_point, mas_temp_diff):
     else:
         return
 
+def stb_time(time):
+    if(time == "1 Minute"):
+        return 60
+    elif(time == "2 Minutes"):
+        return 120
+    elif(time == "3 Minutes"):
+        return 180
+    elif(time == "4 Minutes"):
+        return 240
+    elif(time == "5 Minutes"):
+        return 300
+    elif(time == "6 Minutes"):
+        return 360
+    elif(time == "7 Minutes"):
+        return 420
+    elif(time == "8 Minutes"):
+        return 480
+    elif(time == "9 Minutes"):
+        return 540
+    elif(time == "10 Minutes"):
+        return 600
+
 
 def main(sp_list, mas_stb_time, fur_stb_time, standard_mas_std, mas_temp_diff):
+    mas_stb_time = stb_time(mas_stb_time)
+    fur_stb_time = stb_time(fur_stb_time)   
     for i in range(len(sp_list)):
         set_point = sp_list(i)
         ch = FloatModbusClient(host, port, unit_id=1, auto_open=True)
